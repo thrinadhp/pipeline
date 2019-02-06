@@ -1,32 +1,29 @@
-node('master') 
+node('master')
 {
-    stage('ContinuousDownload')
-    {
-       git 'https://github.com/selenium-saikrishna/maven.git'
-    }
-    stage('ContinuousBuild')
-    {
-       sh 'mvn package'
-    }
-    stage('ContinuousDeployment')
-    {
-        sh 'scp /home/vagrant/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war vagrant@10.0.0.8:/var/lib/tomcat7/webapps/qaenv.war'
-    }
-    stage('ContinuousTesting')
-    {
-        git 'https://github.com/selenium-saikrishna/TestingNew.git'
-        sh 'java -jar /home/vagrant/.jenkins/workspace/ScriptedPipeline/testing.jar'
-    }
-    stage('ContinuousDelivery')
-    {
-        input message: 'Waiting for approval from Delivery Manager!', submitter: 'Venu'
-        sh 'scp /home/vagrant/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war vagrant@10.0.0.9:/var/lib/tomcat7/webapps/newprod.war'
-    }
-    
-    
-    
-    
-    
+  stage('continuous download')
+    { 
+        git 'https://github.com/thrinadhp/maven.git'
 
-   
+     }
+   stage('continuous build')
+   {
+      sh 'mvn package'
+   }
+   stage('continuous deployment')
+   {
+     scp '/root/.jenkins/workspace/scriptpip/webapp/target/webapp.war ubuntu@172.31.20.70:/var/lib/tomcat7/webapps/qa.war'
+   }
+   stage('continuous testing')
+   {
+      git 'https://github.com/selenium-saikrishna/FunctionalTesting.git'
+      sh 'java -jar testing.jar'
+   }
+   stage('continuous deployment')
+   {
+     scp '/root/.jenkins/workspace/scriptpip/webapp/target/webapp.war ubuntu@172.31.22.148:/var/lib/tomcat7/webapps/pro.war'
+
+   }
 }
+
+
+
