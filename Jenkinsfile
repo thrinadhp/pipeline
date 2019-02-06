@@ -2,7 +2,7 @@ node('master')
 {
   stage('continuous download')
     { 
-        git 'https://github.com/thrinadhp/maven.git'
+        git 'https://github.com/thrinadhp/pipeline.git'
 
      }
    stage('continuous build')
