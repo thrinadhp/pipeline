@@ -11,7 +11,7 @@ node('master')
    }
    stage('continuous deployment')
    {
-     scp '/root/.jenkins/workspace/scriptpip/webapp/target/webapp.war ubuntu@172.31.20.70:/var/lib/tomcat7/webapps/qa.war'
+     scp '/root/.jenkins/workspace/scriptpip/webapp/target/webapp.war ubuntu@172.31.20.70:/var/lib/tomcat7/webapps/qa2.war'
    }
    stage('continuous testing')
    {
@@ -20,7 +20,7 @@ node('master')
    }
    stage('continuous deployment')
    {
-     scp '/root/.jenkins/workspace/scriptpip/webapp/target/webapp.war ubuntu@172.31.22.148:/var/lib/tomcat7/webapps/pro.war'
+     scp '/root/.jenkins/workspace/scriptpip/webapp/target/webapp.war ubuntu@172.31.22.148:/var/lib/tomcat7/webapps/pro2.war'
 
    }
 }
