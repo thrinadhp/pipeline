@@ -1,6 +1,6 @@
 node('master')
 {
-  stage('continuous download')
+  stage('continuous Download')
     { 
         git 'https://github.com/thrinadhp/pipeline.git'
      }
