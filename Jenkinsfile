@@ -21,12 +21,12 @@ node('master')
    }
    stage('continuous delivery')
    {
+     
      input message: 'Requesting for approval from DM', submitter: 'kumar'
      sh 'scp /root/.jenkins/workspace/scriptpip/webapp/target/webapp.war ubuntu@172.31.22.148:/var/lib/tomcat7/webapps/pro1.war'
-
-
-   }
-}
+     
+     }
+} 
 
 
 
